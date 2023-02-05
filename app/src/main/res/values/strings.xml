@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Data Collection App</string>
+    <string name="txt_btn_start">Start</string>
+    <string name="hint_duration">Duration of each recording (s)</string>
+    <string name="hint_num_recordings">Number of Recordings</string>
+    <string name="main_header">Input Details:</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_data_per_second">Data Points per Second</string>
+    <string name="hint_recording_delay">Delay between recordings (s)</string>
+    <string name="lbl_recordings_done">Recordings Done:</string>
+    <string name="txt_btn_pause">Pause</string>
+    <string name="txt_btn_pause_start">Start</string>
+    <string name="txt_btn_finish">Finish</string>
+    <string name="txt_btn_back">Back</string>
+    <string name="lbl_name">Name:</string>
+    <string name="hint_session_number">Session Number</string>
+</resources>
