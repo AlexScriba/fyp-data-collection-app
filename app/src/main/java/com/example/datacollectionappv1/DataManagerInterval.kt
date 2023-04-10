@@ -9,9 +9,7 @@ import kotlinx.coroutines.Runnable
 val DEFAULT_SAVE_DIR = "Recordings"
 
 /**
- * TODO : add cleanup function to remove listeners from sensors
- * TODO : add isRecording to be able to check if it is recording or not (also look into if there
- *        are any issues with pressing stop or start when it is already stopped or started
+ * Data Manager Class that uses SensorDataInterval to record data
  */
 class DataManagerInterval (
         sensorManager: SensorManager,
@@ -79,6 +77,9 @@ class DataManagerInterval (
         }
     }
 
+    /**
+     * Function to create SensorData instances and add them to sensors as event listeners
+     */
     private fun mountSensors(
         sensorManager: SensorManager,
         initData: Array<SensorInitData>,

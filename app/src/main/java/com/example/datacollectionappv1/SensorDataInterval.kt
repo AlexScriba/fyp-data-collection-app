@@ -17,6 +17,9 @@ class DataPoint(
     val dataAsCSV: String get () { return "${x},${y},${z},${timeStamp}" }
 }
 
+/**
+ * SensorData class that records data at set intervals
+ */
 class SensorDataInterval (
     val name: String,
     val type: Int,
@@ -107,6 +110,9 @@ class SensorDataInterval (
         return "${name}:\nx: ${x}\ny: ${y}\nz: $z\nts: $timeStamp"
     }
 
+    /**
+     * Convert each recording Data to CSV format and save in a file
+     */
     fun saveSensorCsv(context: Context, rootDir: String, personName: String, personSession: String) {
         val fileHeaders = "x,y,z,timeStamp\n"
 
@@ -124,10 +130,6 @@ class SensorDataInterval (
             val fileContents = recording
                 .map { point -> point.dataAsCSV }
                 .fold(fileHeaders) {body, line -> body + "${line}\n"}
-
-//            context.openFileOutput(fileName, Context.MODE_PRIVATE).use {
-//                it.write(fileContents.toByteArray())
-//            }
 
             FileOutputStream(file).use {
                 it.write(fileContents.toByteArray())

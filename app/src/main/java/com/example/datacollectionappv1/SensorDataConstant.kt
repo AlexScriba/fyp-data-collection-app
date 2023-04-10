@@ -9,6 +9,9 @@ import android.provider.ContactsContract.Data
 import java.io.File
 import java.io.FileOutputStream
 
+/**
+ * SensorData class that records sensor data at max rate possible
+ */
 class SensorDataConstant(
     val name: String,
     val type: Int,
@@ -117,10 +120,6 @@ class SensorDataConstant(
             val fileContents = recording
                 .map { point -> point.dataAsCSV }
                 .fold(fileHeaders) {body, line -> body + "${line}\n"}
-
-//            context.openFileOutput(fileName, Context.MODE_PRIVATE).use {
-//                it.write(fileContents.toByteArray())
-//            }
 
             FileOutputStream(file).use {
                 it.write(fileContents.toByteArray())

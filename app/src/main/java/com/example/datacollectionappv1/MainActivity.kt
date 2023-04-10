@@ -44,8 +44,6 @@ class MainActivity : AppCompatActivity() {
         val name = findViewById<TextInputEditText>(R.id.inp_name).text.toString()
         val numRec = findViewById<TextInputEditText>(R.id.inp_num_records).text.toString()
         val recDur = findViewById<TextInputEditText>(R.id.inp_record_duration).text.toString()
-//        val dataPerSecond = findViewById<TextInputEditText>(R.id.inp_data_per_second).text.toString()
-        // Not currently using dataPerSecond
         val dataPerSecond = "60"
         val recordingDelay = findViewById<TextInputEditText>(R.id.inp_recording_delay).text.toString()
         val sessionNumber = findViewById<TextInputEditText>(R.id.inp_session_number).text.toString()

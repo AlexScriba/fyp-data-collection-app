@@ -3,6 +3,9 @@ package com.example.datacollectionappv1
 import android.content.Context
 import android.hardware.SensorManager
 
+/**
+ * Data Manager Class that uses SensorDataConstant to record data
+ */
 class DataManagerConstant(
     private val sensorManager: SensorManager,
     private val personName: String,
@@ -10,6 +13,9 @@ class DataManagerConstant(
 
     initData: Array<SensorInitData>,
 ) : DataManager {
+    /**
+     * Map to store each sensors SensorData class
+     */
     private var sensors: MutableMap<Int, SensorDataConstant> = mutableMapOf()
 
     override val numSessionsDone : Int get () { return this.getArchiveSizes()[0] }
@@ -47,6 +53,9 @@ class DataManagerConstant(
         }
     }
 
+    /**
+     * Create SensorData instances and add them to sensors as event listeners
+     */
     private fun mountSensors(
         sensorManager: SensorManager,
         initData: Array<SensorInitData>,

@@ -192,6 +192,10 @@ class RecordingActivity : AppCompatActivity() {
         runAfterCountdown(recordingDelay) {}
     }
 
+    /**
+     * Function to handle logic once recording session is finished
+     * Handle UI and Saving Data
+     */
     private fun onFinishSession() {
         cancelSequences()
         stopCountdown()
@@ -214,6 +218,9 @@ class RecordingActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * On Click handler for start button
+     */
     private fun buttonStart() {
         btnPause.setText(R.string.txt_btn_pause)
         btnPause.setOnClickListener { buttonPause() }
@@ -226,6 +233,9 @@ class RecordingActivity : AppCompatActivity() {
         runAfterCountdown(recordingDelay) { mainHandler.post(recordSequence) }
     }
 
+    /**
+     * On Click handler for pause button
+     */
     private fun buttonPause() {
         stopCountdown()
         cancelSequences()
@@ -236,6 +246,9 @@ class RecordingActivity : AppCompatActivity() {
         displayMessage("Session Paused.\nClick Start to resume recording.")
     }
 
+    /**
+     * On Click handler for finish button
+     */
     private fun buttonFinish() {
         dataManager.stopRecording(false)
 
@@ -245,19 +258,31 @@ class RecordingActivity : AppCompatActivity() {
         btnFinish.setText(R.string.txt_btn_back)
     }
 
+    /**
+     * On Click handler for back button
+     */
     private fun buttonBack() {
-        // TODO maybe do cleanup here
         finish()
     }
 
+    /**
+     * Function to handle displaying information to user
+     * Displays number of recordings to user
+     */
     private fun updateStats() {
         txtNumRecordings.text = dataManager.numSessionsDone.toString()
     }
 
+    /**
+     * Function to display a message to a text view in UI
+     */
     private fun displayMessage(msg: String) {
         txtMessage.text = msg
     }
 
+    /**
+     * Function to display an error and stop looper threads
+     */
     private fun errorClose(msg: String = "An error occurred.", delay: Int = 0) {
         Toast.makeText(this, "Recording Error: $msg", Toast.LENGTH_SHORT).show()
 
@@ -295,6 +320,10 @@ class RecordingActivity : AppCompatActivity() {
         txtCountdown.text = ""
     }
 
+    /**
+     * Handle pinging user
+     * Through Vibration and Sound
+     */
     private fun pingUser(vibrate: Boolean = true, sound: Boolean = true) {
         if(vibrate) buzzVibrator()
         if(sound) playSound()
@@ -314,7 +343,6 @@ class RecordingActivity : AppCompatActivity() {
     }
 
     private fun playSound(){
-//        val notification: Uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val notification: Uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val r: Ringtone = RingtoneManager.getRingtone(applicationContext, notification)
         r.play()
